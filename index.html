@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://lucide.dev/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>etalas | Digital Software House</title>
+    <meta name="description" content="Etalas is a premium digital product studio specializing in AI, Strategy, Design, and Development for startups and founders. Build your MVP in weeks.">
+    <meta name="keywords" content="AI Product Studio, Software House, Web Development, App Development, MVP Builder, Startup Agency, UI/UX Design, Etalas">
+    <meta name="author" content="etalas">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.etalas.com/">
+    <meta property="og:title" content="etalas | Digital Software House">
+    <meta property="og:description" content="The #1 AI Product Studio. Trusted by startups and founders to design, build, and launch products that scale.">
+    <meta property="og:image" content="https://www.etalas.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.etalas.com/">
+    <meta property="twitter:title" content="etalas | Digital Software House">
+    <meta property="twitter:description" content="The #1 AI Product Studio. Trusted by startups and founders to design, build, and launch products that scale.">
+    <meta property="twitter:image" content="https://www.etalas.com/og-image.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Manrope', 'sans-serif'],
+            },
+            colors: {
+              etalas: {
+                bg: '#FDFBF7',
+                text: '#121212',
+                accent: '#E5E5E5',
+                secondary: '#666666'
+              },
+              brand: {
+                50: '#eef2ff',
+                100: '#e0e7ff',
+                500: '#6366f1',
+                600: '#4f46e5',
+                900: '#312e81',
+              }
+            },
+            animation: {
+              'marquee': 'marquee 25s linear infinite',
+              'blob': 'blob 7s infinite',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #FDFBF7;
+        color: #121212;
+        overflow-x: hidden;
+      }
+      .dark body {
+        background-color: #09090b;
+        color: #FDFBF7;
+      }
+      ::selection {
+        background: #4f46e5;
+        color: #FDFBF7;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

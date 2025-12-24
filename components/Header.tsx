@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './Button';
 import { useLanguage, useTheme } from '../contexts';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  currentView: 'home' | 'blog';
+  onNavigate: (view: 'home' | 'blog') => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
 
   const navItems = [
-    { label: t('nav.process'), href: '#process' },
-    { label: t('nav.benefits'), href: '#benefits' },
-    { label: t('nav.pricing'), href: '#pricing' },
-    { label: t('nav.faq'), href: '#faq' },
+    { label: 'Work', href: '#work', view: 'home' },
+    { label: 'Services', href: '#services', view: 'home' },
+    { label: t('nav.process'), href: '#process', view: 'home' },
+    { label: 'Blog', href: '#blog', view: 'blog' },
+    { label: t('nav.faq'), href: '#faq', view: 'home' },
   ];
 
   useEffect(() => {
@@ -25,10 +31,32 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappLink = "https://wa.me/628567234922?text=Hi%20etalas,%20I'd%20like%20to%20schedule%20a%20call%20to%20discuss%20my%20project.";
+  const whatsappLink = "https://wa.me/62811297339?text=Hi%20etalas,%20I'd%20like%20to%20schedule%20a%20call%20to%20discuss%20my%20project.";
 
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'id' : 'en');
+  };
+
+  const handleNavClick = (e: React.MouseEvent, item: typeof navItems[0]) => {
+    e.preventDefault();
+    
+    if (item.view === 'blog') {
+      onNavigate('blog');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      if (currentView !== 'home') {
+        onNavigate('home');
+        // Small delay to allow home component to mount before scrolling
+        setTimeout(() => {
+          const element = document.querySelector(item.href);
+          if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const element = document.querySelector(item.href);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -36,12 +64,17 @@ export const Header: React.FC = () => {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled 
-            ? 'py-4 bg-etalas-bg/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 shadow-sm' 
+            ? 'py-4 bg-white/80 dark:bg-zinc-950/90 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 shadow-sm' 
             : 'py-8 bg-transparent'
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <a href="#" className="text-2xl font-bold tracking-tight relative z-50 group text-etalas-text dark:text-white" aria-label="Etalas Home">
+          <a 
+            href="#" 
+            onClick={(e) => { e.preventDefault(); onNavigate('home'); window.scrollTo({top:0, behavior:'smooth'}); }}
+            className="text-2xl font-bold tracking-tight relative z-50 group text-etalas-text dark:text-white" 
+            aria-label="Etalas Home"
+          >
             etalas<span className="text-brand-600 transition-colors group-hover:text-black dark:group-hover:text-white">.</span>
           </a>
 
@@ -49,9 +82,12 @@ export const Header: React.FC = () => {
           <nav className="hidden md:flex items-center gap-6" aria-label="Main Navigation">
             {navItems.map((item) => (
               <a 
-                key={item.href} 
+                key={item.label} 
                 href={item.href}
-                className="text-sm font-medium text-etalas-secondary dark:text-gray-400 hover:text-brand-600 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-brand-600 after:transition-all hover:after:w-full"
+                onClick={(e) => handleNavClick(e, item as any)}
+                className={`text-sm font-medium transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-brand-600 after:transition-all hover:after:w-full ${
+                  (currentView === 'blog' && item.view === 'blog') ? 'text-brand-600' : 'text-etalas-secondary dark:text-gray-400 hover:text-brand-600 dark:hover:text-white'
+                }`}
               >
                 {item.label}
               </a>
@@ -113,18 +149,18 @@ export const Header: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-etalas-bg dark:bg-zinc-950 z-40 flex flex-col justify-center items-center"
+            className="fixed inset-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl z-40 flex flex-col justify-center items-center"
           >
             <div className="flex flex-col items-center gap-8">
               {navItems.map((item, i) => (
                 <motion.a
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.1 }}
                   className="text-4xl font-light dark:text-white hover:text-brand-600 hover:italic transition-all cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, item as any)}
                 >
                   {item.label}
                 </motion.a>

@@ -34,25 +34,27 @@ export const Services: React.FC = () => {
   const [activeId, setActiveId] = useState<number | null>(1);
 
   return (
-    <section id="services" className="py-24 px-6 md:px-12 bg-etalas-bg dark:bg-zinc-950 transition-colors duration-300">
+    <section id="services" className="py-24 md:py-32 px-6 md:px-12 bg-etalas-bg dark:bg-zinc-950 transition-colors duration-300">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+          {/* Sticky Left Column */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6 sticky top-32 dark:text-white">
+              <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6 dark:text-white">
                 Our <br /> Expertise
               </h2>
-              <p className="text-etalas-secondary dark:text-gray-400 mb-8 sticky top-64 lg:max-w-xs">
+              <p className="text-etalas-secondary dark:text-gray-400 mb-8 text-lg leading-relaxed">
                 We cover the entire product lifecycle, from initial concept to final deployment and scaling.
               </p>
             </motion.div>
           </div>
 
+          {/* Scrollable Right Column */}
           <div className="lg:col-span-8">
             <div className="flex flex-col">
               {services.map((service, index) => (
@@ -66,7 +68,7 @@ export const Services: React.FC = () => {
                 >
                   <button 
                     onClick={() => setActiveId(activeId === service.id ? null : service.id)}
-                    className="w-full py-8 flex justify-between items-center text-left group"
+                    className="w-full py-10 flex justify-between items-center text-left group"
                   >
                     <span className="text-2xl md:text-4xl font-light group-hover:pl-4 transition-all duration-300 dark:text-white">
                       {service.title}
@@ -84,7 +86,7 @@ export const Services: React.FC = () => {
                         transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-8 pt-2 pl-0 md:pl-4">
+                        <div className="pb-10 pt-2 pl-0 md:pl-4">
                           <p className="text-xl text-etalas-secondary dark:text-gray-400 mb-6 max-w-2xl leading-relaxed">
                             {service.description}
                           </p>

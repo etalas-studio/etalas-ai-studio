@@ -9,9 +9,10 @@ interface ButtonProps {
   href?: string;
   target?: string;
   type?: 'button' | 'submit' | 'reset';
+  rel?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', className = '', onClick, href, target, type = 'button' }) => {
+export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', className = '', onClick, href, target, type = 'button', rel }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -51,10 +52,14 @@ export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', c
   };
 
   if (href) {
+    // Automatically add noopener noreferrer for external blank targets if not specified
+    const finalRel = rel || (target === '_blank' ? 'noopener noreferrer' : undefined);
+    
     return (
       <motion.a
         href={href}
         target={target}
+        rel={finalRel}
         className={`${baseStyles} ${variants[variant]} ${className}`}
         {...motionProps}
       >

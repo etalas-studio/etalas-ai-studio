@@ -16,7 +16,6 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     if (typeof window !== 'undefined') {
       const savedLang = localStorage.getItem('etalas-lang');
       if (savedLang === 'en' || savedLang === 'id') return savedLang;
-      // Optional: Check navigator.language here
     }
     return 'en';
   });
@@ -59,14 +58,8 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('etalas-theme');
-      if (savedTheme === 'dark' || savedTheme === 'light') return savedTheme;
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-    }
-    return 'light';
-  });
+  // Default to 'light' as requested, ignoring system preference initially for the "Bright" look
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
     if (theme === 'dark') {

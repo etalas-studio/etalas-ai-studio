@@ -6,7 +6,7 @@ import { useLanguage } from '../contexts';
 
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
-  const whatsappLink = "https://wa.me/628567234922?text=Hi%20etalas,%20I'd%20like%20to%20schedule%20a%20call.";
+  const whatsappLink = "https://wa.me/62811297339?text=Hi%20etalas,%20I'd%20like%20to%20schedule%20a%20call.";
 
   return (
     <>
@@ -53,19 +53,26 @@ export const Footer: React.FC = () => {
               <div>
                 <h4 className="text-gray-500 text-sm mb-6 uppercase tracking-wider font-bold">{t('footer.contact')}</h4>
                 <a href="mailto:hello@etalas.com" className="block hover:text-brand-400 text-gray-300 transition-colors mb-2">hello@etalas.com</a>
-                <a href={whatsappLink} target="_blank" className="block hover:text-brand-400 text-gray-300 transition-colors">+62 856 7234 922</a>
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block hover:text-brand-400 text-gray-300 transition-colors">+62 811-297-339</a>
               </div>
             </div>
           </div>
 
           <div className="border-t border-gray-800 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} etalas. {t('footer.rights')}
+            <div className="flex flex-col gap-4 w-full md:w-auto">
+                <div className="text-gray-500 text-sm">
+                © {new Date().getFullYear()} etalas. {t('footer.rights')}
+                </div>
+                <div className="text-gray-300 text-lg font-medium tracking-tight">
+                    {t('footer.legal')}
+                </div>
             </div>
             
             <div className="flex gap-4">
               <motion.a 
-                href="#" 
+                href="https://linkedin.com/company/etalas" 
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="p-3 border border-gray-800 rounded-full hover:bg-white hover:text-black hover:border-white text-white"
                 whileHover={{ scale: 1.1, y: -2 }}
@@ -83,7 +90,9 @@ export const Footer: React.FC = () => {
                 <Twitter size={20} />
               </motion.a>
               <motion.a 
-                href="#" 
+                href="https://www.instagram.com/etalas.id/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="p-3 border border-gray-800 rounded-full hover:bg-white hover:text-black hover:border-white text-white"
                 whileHover={{ scale: 1.1, y: -2 }}

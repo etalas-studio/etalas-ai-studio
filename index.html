@@ -9,6 +9,7 @@
     <meta name="keywords" content="AI Product Studio, Software House, Web Development, App Development, MVP Builder, Startup Agency, UI/UX Design, Etalas">
     <meta name="author" content="etalas">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.etalas.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -23,6 +24,28 @@
     <meta property="twitter:title" content="etalas | Digital Software House">
     <meta property="twitter:description" content="The #1 AI Product Studio. Trusted by startups and founders to design, build, and launch products that scale.">
     <meta property="twitter:image" content="https://www.etalas.com/og-image.jpg">
+
+    <!-- JSON-LD for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "etalas",
+      "url": "https://www.etalas.com",
+      "logo": "https://www.etalas.com/logo.png",
+      "sameAs": [
+        "https://www.instagram.com/etalas.id/",
+        "https://linkedin.com/company/etalas"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+62-811-297-339",
+        "contactType": "sales",
+        "areaServed": ["US", "ID"],
+        "availableLanguage": ["English", "Indonesian"]
+      }
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +75,7 @@
               }
             },
             animation: {
-              'marquee': 'marquee 25s linear infinite',
+              'marquee': 'marquee 60s linear infinite', /* Slowed down from 25s to 60s */
               'blob': 'blob 7s infinite',
             },
             keyframes: {
@@ -85,8 +108,22 @@
         background: #4f46e5;
         color: #FDFBF7;
       }
-      html {
-        scroll-behavior: smooth;
+      
+      /* Lenis Recommended CSS */
+      html.lenis, html.lenis body {
+        height: auto;
+      }
+      .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+      }
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+      .lenis.lenis-stopped {
+        overflow: hidden;
+      }
+      .lenis.lenis-scrolling iframe {
+        pointer-events: none;
       }
     </style>
   <script type="importmap">
@@ -96,7 +133,8 @@
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
     "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lenis": "https://esm.sh/lenis@^1.3.16"
   }
 }
 </script>

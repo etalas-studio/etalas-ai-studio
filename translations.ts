@@ -13,6 +13,12 @@ export const translations = {
       subtitle: 'Trusted by startups and founders to design, build, and launch products that scale.',
       startBuilding: 'Start Building',
       viewPricing: 'View Pricing',
+      roi: ["Launch in 2 weeks", "Save 40% vs Traditional Dev", "Enterprise Security"],
+      trustedBy: "Trusted by"
+    },
+    techStack: {
+      heading: 'Powered by modern tech',
+      subheading: 'We use the latest tools to ensure speed, scalability, and security.',
     },
     process: {
       heading: 'How we work?',
@@ -56,22 +62,23 @@ export const translations = {
     },
     pricing: {
       heading: 'Our Pricing.',
-      subheading: 'Your own fractionalized team, with flexible pricing. No contract term.',
+      subheading: 'Simple, transparent pricing to build your product.',
       sprints: {
         title: 'Sprints',
-        subtitle: '2-Weeks Sprints',
-        desc: 'For founders or teams who want to move fast — strategy, design, and development executed in 14 days.',
+        subtitle: 'Bi-Weekly Sprints',
+        desc: 'Continuous iteration and development for growing products.',
         period: '/ Bi-Weekly',
         btn: 'Book A Call'
       },
       mvp: {
         title: 'MVP Development',
-        subtitle: 'We deliver an MVP in 2 weeks',
-        desc: "In 2-weeks you'll have a full working product ready to launch to the world.",
+        subtitle: 'One Time MVP',
+        desc: "From concept to launch in 2 weeks. Validated and ready for market.",
         period: '/ One-time',
         btn: 'Get Started Today'
       },
       pauseCancel: 'Pause or cancel anytime',
+      trustSignal: 'Join 50+ founders building with us.',
       features: {
         sprints: [
           "AI developer team",
@@ -90,6 +97,96 @@ export const translations = {
           "Weekly progress updates"
         ]
       }
+    },
+    team: {
+      heading: "The Team",
+      subheading: "Led by veterans with extensive experience in unicorns and enterprise tech.",
+      members: [
+        { 
+          name: "Pandu Hartanto", 
+          role: "Co-Founder", 
+          bio: "Helps founders build impactful businesses with deep expertise in product management. Background includes bootstrapping SaaS, growing Veritrans into Indonesia's leading payment gateway, and developing business tools at Gojek.",
+          experience: ["Midtrans", "GoTo"],
+          linkedin: "https://www.linkedin.com/in/panduhartanto/"
+        },
+        { 
+          name: "Andre", 
+          role: "Co-Founder", 
+          bio: "A product leader with over a decade of experience. Co-founded Coral (acquired by Midtrans), Prism, and Selly Keyboard. Specializes in 'Vibe Coding'—leveraging AI to craft intuitive, practical products.",
+          experience: ["Yahoo", "Prism", "Midtrans", "GoTo"],
+          linkedin: "https://www.linkedin.com/in/afendris/"
+        },
+        { 
+          name: "Ari Bhakti Subagja", 
+          role: "Co-Founder", 
+          bio: "Accomplished PM with 14 years in fintech and payments. Excels in B2B/B2C environments with a strong track record in enterprise and startup settings. Expert in driving growth, QA, and strategic project management.",
+          experience: ["Kartuku", "Midtrans", "GoTo", "VIDA"],
+          linkedin: "https://www.linkedin.com/in/aribhaktisubagja"
+        },
+        {
+          name: "Dina",
+          role: "Product Manager",
+          bio: "Ex-Accenture PM. Ensures product vision aligns with strategic business goals through rigorous planning and execution.",
+          experience: ["Accenture"]
+        },
+        {
+          name: "Hanif",
+          role: "Tech Lead",
+          bio: "Ex-Revido. Leading engineering excellence and technical decision-making for complex systems.",
+          experience: ["Revido"]
+        },
+        {
+          name: "Rifqy",
+          role: "Senior Fullstack Product Engineer",
+          bio: "Building scalable, high-performance applications with deep expertise in modern full-stack architectures."
+        },
+        {
+          name: "Rois",
+          role: "Senior Fullstack Product Engineer",
+          bio: "Specialist in robust backend systems and seamless frontend integrations for enterprise-grade products.",
+          experience: ["ThinkDigital Asia", "Nodeflux", "Vida"]
+        },
+        {
+          name: "Delia",
+          role: "Fullstack Product Engineer",
+          bio: "Turning complex requirements into clean, maintainable code across the entire technology stack."
+        },
+        {
+          name: "Thufail",
+          role: "Fullstack Product Engineer",
+          bio: "Passionate about creating efficient digital solutions with a focus on user-centric development."
+        },
+        {
+          name: "Hilmi",
+          role: "Fullstack Product Engineer",
+          bio: "Delivering end-to-end features with a strong emphasis on code quality and performance."
+        },
+        {
+          name: "Bagas",
+          role: "Frontend Product Engineer",
+          bio: "Crafting pixel-perfect, responsive, and accessible user interfaces that delight users."
+        },
+        {
+          name: "Prima",
+          role: "Frontend Product Engineer",
+          bio: "Focused on frontend architecture and delivering smooth, high-performance web experiences.",
+          experience: ["Lazada", "Shopee"]
+        },
+        {
+          name: "Aziz",
+          role: "UI/UX Designer",
+          bio: "Designing intuitive and aesthetically pleasing digital experiences that solve real user problems."
+        }
+      ]
+    },
+    resources: {
+      heading: "Resources",
+      subheading: "Free guides to help you build better products faster. Download now.",
+      items: [
+        { title: "The 14-Day MVP Guide", desc: "How to validate your idea without writing code." },
+        { title: "AI vs Traditional Dev", desc: "A cost-benefit analysis for 2024 founders." }
+      ],
+      btn: "Download Free"
     },
     faq: {
       heading: 'Questions?',
@@ -118,7 +215,8 @@ export const translations = {
       tagline: 'Building the next generation of digital products with speed, precision, and intelligence.',
       company: 'Company',
       contact: 'Contact',
-      rights: 'All rights reserved.'
+      rights: 'All rights reserved.',
+      legal: 'PT Etalas Karya Internasional (ID) & Etalas LLC (US)'
     }
   },
   id: {
@@ -135,6 +233,12 @@ export const translations = {
       subtitle: 'Dipercaya oleh startup dan pendiri untuk merancang, membangun, dan meluncurkan produk yang berskala.',
       startBuilding: 'Mulai Membangun',
       viewPricing: 'Lihat Harga',
+      roi: ["Luncurkan dlm 2 minggu", "Hemat 40% biaya dev", "Keamanan Enterprise"],
+      trustedBy: "Dipercaya oleh"
+    },
+    techStack: {
+      heading: 'Ditenagai teknologi modern',
+      subheading: 'Kami menggunakan alat terbaru untuk memastikan kecepatan, skalabilitas, dan keamanan.',
     },
     process: {
       heading: 'Cara Kerja Kami',
@@ -182,18 +286,19 @@ export const translations = {
       sprints: {
         title: 'Sprint',
         subtitle: 'Sprint 2 Minggu',
-        desc: 'Untuk pendiri atau tim yang ingin bergerak cepat — strategi, desain, dan pengembangan dieksekusi dalam 14 hari.',
+        desc: 'Iterasi dan pengembangan berkelanjutan untuk produk yang sedang tumbuh.',
         period: '/ 2-Mingguan',
         btn: 'Jadwalkan Panggilan'
       },
       mvp: {
         title: 'Pengembangan MVP',
-        subtitle: 'Kami mengirimkan MVP dalam 2 minggu',
-        desc: "Dalam 2 minggu Anda akan memiliki produk kerja penuh yang siap diluncurkan ke dunia.",
+        subtitle: 'MVP Satu Kali',
+        desc: "Dari konsep hingga peluncuran dalam 2 minggu. Tervalidasi dan siap pasar.",
         period: '/ Sekali bayar',
         btn: 'Mulai Hari Ini'
       },
       pauseCancel: 'Jeda atau batalkan kapan saja',
+      trustSignal: 'Bergabung dengan 50+ pendiri.',
       features: {
         sprints: [
           "Tim pengembang AI",
@@ -212,6 +317,96 @@ export const translations = {
           "Update progress mingguan"
         ]
       }
+    },
+    team: {
+      heading: "Tim",
+      subheading: "Dipimpin oleh veteran dengan pengalaman luas di unicorn dan teknologi perusahaan.",
+      members: [
+        { 
+          name: "Pandu Hartanto", 
+          role: "Co-Founder", 
+          bio: "Membantu pendiri membangun bisnis berdampak dengan keahlian mendalam dalam manajemen produk. Latar belakang meliputi bootstrapping SaaS, mengembangkan Veritrans menjadi gateway pembayaran terkemuka di Indonesia, dan mengembangkan alat bisnis di Gojek.",
+          experience: ["Midtrans", "GoTo"],
+          linkedin: "https://www.linkedin.com/in/panduhartanto/"
+        },
+        { 
+          name: "Andre", 
+          role: "Co-Founder", 
+          bio: "Seorang pemimpin produk dengan pengalaman lebih dari satu dekade. Co-founder Coral (diakuisisi oleh Midtrans), Prism, and Selly Keyboard. Mengkhususkan diri dalam 'Vibe Coding'—memanfaatkan AI untuk membuat produk yang intuitif dan praktis.",
+          experience: ["Yahoo", "Prism", "Midtrans", "GoTo"],
+          linkedin: "https://www.linkedin.com/in/afendris/"
+        },
+        { 
+          name: "Ari Bhakti Subagja", 
+          role: "Co-Founder", 
+          bio: "PM berprestasi dengan 14 tahun di fintech dan pembayaran. Unggul di lingkungan B2B/B2C dengan rekam jejak yang kuat di pengaturan perusahaan dan startup. Ahli dalam mendorong pertumbuhan, QA, dan manajemen proyek strategis.",
+          experience: ["Kartuku", "Midtrans", "GoTo", "VIDA"],
+          linkedin: "https://www.linkedin.com/in/aribhaktisubagja"
+        },
+        {
+          name: "Dina",
+          role: "Product Manager",
+          bio: "Ex-Accenture PM. Memastikan visi produk sejalan dengan tujuan bisnis strategis melalui perencanaan dan eksekusi yang ketat.",
+          experience: ["Accenture"]
+        },
+        {
+          name: "Hanif",
+          role: "Tech Lead",
+          bio: "Ex-Revido. Memimpin keunggulan teknik dan pengambilan keputusan teknis untuk sistem yang kompleks.",
+          experience: ["Revido"]
+        },
+        {
+          name: "Rifqy",
+          role: "Senior Fullstack Product Engineer",
+          bio: "Membangun aplikasi berkinerja tinggi yang skalabel dengan keahlian mendalam dalam arsitektur full-stack modern."
+        },
+        {
+          name: "Rois",
+          role: "Senior Fullstack Product Engineer",
+          bio: "Spesialis dalam sistem backend yang tangguh dan integrasi frontend yang mulus untuk produk kelas perusahaan.",
+          experience: ["ThinkDigital Asia", "Nodeflux", "Vida"]
+        },
+        {
+          name: "Delia",
+          role: "Fullstack Product Engineer",
+          bio: "Mengubah persyaratan kompleks menjadi kode yang bersih dan mudah dipelihara di seluruh stack teknologi."
+        },
+        {
+          name: "Thufail",
+          role: "Fullstack Product Engineer",
+          bio: "Bersemangat menciptakan solusi digital yang efisien dengan fokus pada pengembangan yang berpusat pada pengguna."
+        },
+        {
+          name: "Hilmi",
+          role: "Fullstack Product Engineer",
+          bio: "Menghadirkan fitur end-to-end dengan penekanan kuat pada kualitas kode dan kinerja."
+        },
+        {
+          name: "Bagas",
+          role: "Frontend Product Engineer",
+          bio: "Membuat antarmuka pengguna yang pixel-perfect, responsif, dan mudah diakses yang menyenangkan pengguna."
+        },
+        {
+          name: "Prima",
+          role: "Frontend Product Engineer",
+          bio: "Berfokus pada arsitektur frontend dan menghadirkan pengalaman web yang mulus dan berkinerja tinggi.",
+          experience: ["Lazada", "Shopee"]
+        },
+        {
+          name: "Aziz",
+          role: "UI/UX Designer",
+          bio: "Merancang pengalaman digital yang intuitif dan estetis yang memecahkan masalah nyata pengguna."
+        }
+      ]
+    },
+    resources: {
+      heading: "Sumber Daya",
+      subheading: "Panduan gratis untuk membantu Anda membangun produk yang lebih baik lebih cepat.",
+      items: [
+        { title: "Panduan MVP 14 Hari", desc: "Cara memvalidasi ide Anda tanpa menulis kode." },
+        { title: "AI vs Dev Tradisional", desc: "Analisis biaya-manfaat untuk pendiri 2024." }
+      ],
+      btn: "Unduh Gratis"
     },
     faq: {
       heading: 'Pertanyaan?',
@@ -240,7 +435,8 @@ export const translations = {
       tagline: 'Membangun generasi produk digital berikutnya dengan kecepatan, presisi, dan kecerdasan.',
       company: 'Perusahaan',
       contact: 'Kontak',
-      rights: 'Hak cipta dilindungi.'
+      rights: 'Hak cipta dilindungi.',
+      legal: 'PT Etalas Karya Internasional (ID) & Etalas LLC (US)'
     }
   }
 };

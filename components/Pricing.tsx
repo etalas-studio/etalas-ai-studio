@@ -88,7 +88,8 @@ export const Pricing: React.FC = () => {
       title: t('pricing.mvp.title'),
       subtitle: t('pricing.mvp.subtitle'),
       description: t('pricing.mvp.desc'),
-      price: "Rp100.000.000",
+      price: "Rp100mio",
+      priceSecondary: "or $6k",
       period: t('pricing.mvp.period'),
       features: t('pricing.features.mvp') as string[],
       buttonText: t('pricing.mvp.btn'),
@@ -98,7 +99,8 @@ export const Pricing: React.FC = () => {
       title: t('pricing.sprints.title'),
       subtitle: t('pricing.sprints.subtitle'),
       description: t('pricing.sprints.desc'),
-      price: "Rp50.000.000",
+      price: "Rp50mio",
+      priceSecondary: "or $3k",
       period: t('pricing.sprints.period'),
       features: t('pricing.features.sprints') as string[],
       buttonText: t('pricing.sprints.btn'),
@@ -156,8 +158,11 @@ export const Pricing: React.FC = () => {
                     {item.description}
                   </p>
 
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-3xl md:text-4xl font-bold text-white">{item.price}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-2">
+                    <div className="flex items-baseline gap-2 flex-wrap">
+                        <span className="text-3xl md:text-4xl font-bold text-white whitespace-nowrap">{item.price}</span>
+                        <span className="text-xl text-gray-400 font-medium whitespace-nowrap">{item.priceSecondary}</span>
+                    </div>
                     <span className="text-sm text-gray-500">{item.period}</span>
                   </div>
                   <p className="text-sm mb-8 text-gray-500">{t('pricing.pauseCancel')}</p>

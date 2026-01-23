@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
                 href="https://linkedin.com/company/etalas" 
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Visit Etalas on LinkedIn"
                 className="p-3 border border-gray-800 rounded-full hover:bg-white hover:text-black hover:border-white text-white"
                 whileHover={{ scale: 1.1, y: -2 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
               </motion.a>
               <motion.a 
                 href="#" 
-                aria-label="Twitter"
+                aria-label="Visit Etalas on Twitter"
                 className="p-3 border border-gray-800 rounded-full hover:bg-white hover:text-black hover:border-white text-white"
                 whileHover={{ scale: 1.1, y: -2 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
                 href="https://www.instagram.com/etalas.id/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
+                aria-label="Visit Etalas on Instagram"
                 className="p-3 border border-gray-800 rounded-full hover:bg-white hover:text-black hover:border-white text-white"
                 whileHover={{ scale: 1.1, y: -2 }}
                 transition={{ type: "spring", stiffness: 300 }}

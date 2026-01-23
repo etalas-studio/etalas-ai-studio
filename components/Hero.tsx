@@ -24,7 +24,7 @@ export const Hero: React.FC = () => {
     "Ditajaya", 
     "Musicology", 
     "Skedul",
-    "Pont",
+    "Pont", 
     "Prodago", 
     "Metion"
   ];
@@ -154,10 +154,6 @@ export const Hero: React.FC = () => {
              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
           </div>
       </motion.div>
-      
-      {/* Background Abstract Element */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-b from-brand-100/40 via-purple-100/30 to-transparent dark:from-brand-900/20 dark:via-purple-900/10 rounded-full blur-3xl -z-10 animate-blob mix-blend-multiply dark:mix-blend-screen filter opacity-70 pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-gradient-to-b from-blue-100/40 via-transparent to-transparent dark:from-blue-900/20 rounded-full blur-3xl -z-10 animate-blob animation-delay-2000 pointer-events-none" />
     </section>
   );
 };

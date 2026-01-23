@@ -56,11 +56,14 @@ function AppContent() {
     }
     rafId = requestAnimationFrame(raf);
 
+    // Update Lenis layout when view changes
+    lenis.resize();
+
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, [loading]);
+  }, [loading, currentView]);
 
   // Handle Floating CTA visibility
   useEffect(() => {
@@ -71,7 +74,8 @@ function AppContent() {
         setShowFloatingCTA(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    // Passive listener for better scroll performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -84,22 +88,36 @@ function AppContent() {
     }
   }, [currentView]);
 
-  // Smooth scroll behavior for anchor links
+  // Smooth scroll and Cross-View Navigation Handler
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest('a');
+      
       if (anchor && anchor.hash && anchor.hash.startsWith('#')) {
-        // Prevent default only if we are on home view, otherwise Header handles it
-        if (currentView === 'home') {
-            e.preventDefault();
-            const element = document.querySelector(anchor.hash);
-            if (element) {
+        e.preventDefault();
+        const hash = anchor.hash;
+
+        // Function to perform the scroll
+        const scrollToElement = () => {
+           const element = document.querySelector(hash);
+           if (element) {
+              // Use Lenis-friendly scroll if possible, or native smooth scroll
               element.scrollIntoView({ behavior: 'smooth' });
-            }
+           }
+        };
+
+        if (currentView !== 'home') {
+           // Switch to home first, then scroll
+           setCurrentView('home');
+           // Small delay to allow React to render the Home components
+           setTimeout(scrollToElement, 150);
+        } else {
+           scrollToElement();
         }
       }
     };
+    
     document.addEventListener('click', handleAnchorClick);
     return () => document.removeEventListener('click', handleAnchorClick);
   }, [currentView]);
@@ -126,7 +144,7 @@ function AppContent() {
                   <Hero />
                   
                   {/* Marquee Section */}
-                  <div className="py-12 border-y border-gray-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm overflow-hidden whitespace-nowrap">
+                  <div className="py-12 border-y border-gray-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm overflow-hidden whitespace-nowrap content-visibility-auto">
                     <div className="inline-flex animate-marquee">
                        {[...Array(4)].map((_, i) => (
                          <div key={i} className="flex gap-16 mx-8 items-center text-4xl font-light text-gray-300 dark:text-zinc-700">
@@ -160,6 +178,7 @@ function AppContent() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
+                    className="min-h-screen"
                 >
                     <Suspense fallback={<div className="h-screen" />}>
                         <Blog />
@@ -184,6 +203,7 @@ function AppContent() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               className="fixed bottom-8 right-8 z-40 bg-black dark:bg-white text-white dark:text-black p-4 rounded-full shadow-2xl flex items-center gap-3 pr-6 group"
+              aria-label="Contact on WhatsApp"
             >
               <div className="bg-brand-600 rounded-full p-2 text-white">
                 <MessageCircle size={20} />

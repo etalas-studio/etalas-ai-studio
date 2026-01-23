@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, ShieldCheck, Star } from 'lucide-react';
 import { Button } from './Button';
-import { useLanguage } from '../contexts';
+import { useLanguage, useTheme } from '../contexts';
 import { Tooltip } from './Tooltip';
 
 const TOOLTIP_DATA: Record<string, string> = {
@@ -34,6 +34,7 @@ const PricingCard = ({ item, t, whatsappLink, children }: any) => {
     const divRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [opacity, setOpacity] = useState(0);
+    const { theme } = useTheme();
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!divRef.current) return;
@@ -50,28 +51,31 @@ const PricingCard = ({ item, t, whatsappLink, children }: any) => {
         setOpacity(0);
     };
 
+    // Adjust spotlight based on theme
+    const spotlightColor = theme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)';
+
     return (
         <motion.div
             ref={divRef}
             onMouseMove={handleMouseMove}
             onMouseEnter={handleFocus}
             onMouseLeave={handleBlur}
-            className={`relative p-8 md:p-12 rounded-3xl flex flex-col md:flex-row gap-8 justify-between border transition-all duration-300 bg-[#111111] text-white overflow-hidden ${
-                  item.highlight 
-                    ? 'border-zinc-700 shadow-2xl shadow-brand-900/20' 
-                    : 'border-zinc-800 hover:border-zinc-700'
+            className={`relative p-6 sm:p-8 md:p-10 rounded-3xl flex flex-col md:flex-row gap-8 justify-between border transition-all duration-300 overflow-hidden group
+                  ${item.highlight 
+                    ? 'bg-white dark:bg-[#111111] border-brand-500/30 dark:border-zinc-700 shadow-2xl shadow-brand-900/5 dark:shadow-brand-900/20' 
+                    : 'bg-white dark:bg-[#111111] border-gray-200 dark:border-zinc-800 hover:border-brand-300 dark:hover:border-zinc-700'
             }`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            whileHover={{ scale: 1.01 }}
+            whileHover={{ scale: 1.005 }}
             transition={{ duration: 0.3 }}
         >
              <div
                 className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-10"
                 style={{
                     opacity,
-                    background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.06), transparent 40%)`,
+                    background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
                 }}
             />
             {children}
@@ -109,9 +113,9 @@ export const Pricing: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24 md:py-32 px-6 md:px-12 bg-black text-white relative transition-colors duration-300">
-       {/* Subtle Background Mesh */}
-       <div className="absolute inset-0 bg-[radial-gradient(#3f3f46_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
+    <section id="pricing" className="py-24 md:py-32 px-6 md:px-12 bg-etalas-bg dark:bg-zinc-950 text-etalas-text dark:text-white relative transition-colors duration-300">
+       {/* Subtle Background Mesh - Adapted for Light/Dark */}
+       <div className="absolute inset-0 bg-[radial-gradient(#3f3f46_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-5 dark:opacity-20 pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
@@ -123,14 +127,14 @@ export const Pricing: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6 text-white">
+                <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6 dark:text-white text-etalas-text">
                   {t('pricing.heading')}
                 </h2>
-                <p className="text-xl text-gray-400 text-lg leading-relaxed mb-8">
+                <p className="text-xl text-etalas-secondary dark:text-gray-400 text-lg leading-relaxed mb-8">
                   {t('pricing.subheading')}
                 </p>
                 
-                <div className="flex items-center gap-2 text-sm text-green-400 font-medium bg-green-900/20 w-fit px-3 py-1.5 rounded-full border border-green-900/50">
+                <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium bg-green-100 dark:bg-green-900/20 w-fit px-3 py-1.5 rounded-full border border-green-200 dark:border-green-900/50">
                     <ShieldCheck size={16} />
                     <span>Money-back guarantee on first sprint</span>
                 </div>
@@ -138,52 +142,60 @@ export const Pricing: React.FC = () => {
           </div>
 
           {/* Scrollable Right Column */}
-          <div className="lg:col-span-8 flex flex-col gap-8">
+          <div className="lg:col-span-8 flex flex-col gap-6">
             {pricingItems.map((item, index) => (
               <PricingCard key={index} item={item} t={t} whatsappLink={whatsappLink}>
-                <div className="flex-1 relative z-20">
-                  <div className="flex justify-between items-start mb-6">
-                      <span className={`text-sm font-semibold px-4 py-2 rounded-full bg-white/10 text-white`}>
-                          {item.title}
-                      </span>
-                      {item.highlight && (
-                        <span className="text-xs font-bold bg-gradient-to-r from-brand-500 to-purple-500 text-white px-2 py-1 rounded shadow-lg shadow-brand-500/50">
-                          POPULAR
+                <div className="flex-1 relative z-20 flex flex-col justify-between">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                        <span className={`text-sm font-semibold px-4 py-2 rounded-full bg-gray-100 dark:bg-white/10 text-etalas-text dark:text-white`}>
+                            {item.title}
                         </span>
-                      )}
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-4 text-white">{item.subtitle}</h3>
-                  <p className="mb-8 leading-relaxed text-gray-400">
-                    {item.description}
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-2">
-                    <div className="flex items-baseline gap-2 flex-wrap">
-                        <span className="text-3xl md:text-4xl font-bold text-white whitespace-nowrap">{item.price}</span>
-                        <span className="text-xl text-gray-400 font-medium whitespace-nowrap">{item.priceSecondary}</span>
+                        {item.highlight && (
+                            <span className="text-xs font-bold bg-gradient-to-r from-brand-500 to-purple-500 text-white px-2 py-1 rounded shadow-lg shadow-brand-500/30">
+                            POPULAR
+                            </span>
+                        )}
                     </div>
-                    <span className="text-sm text-gray-500">{item.period}</span>
+                    
+                    <h3 className="text-2xl font-bold mb-4 dark:text-white text-etalas-text">{item.subtitle}</h3>
+                    <p className="mb-8 leading-relaxed text-gray-500 dark:text-gray-400">
+                        {item.description}
+                    </p>
+
+                    <div className="flex flex-col gap-1 mb-6">
+                        <div className="flex items-baseline flex-wrap gap-x-3 gap-y-1">
+                            <span className="text-4xl md:text-5xl font-bold dark:text-white text-etalas-text tracking-tight">{item.price}</span>
+                            <span className="text-lg text-gray-400 dark:text-gray-500 font-medium">{item.priceSecondary}</span>
+                        </div>
+                        <span className="text-sm text-gray-500 font-medium">{item.period}</span>
+                    </div>
                   </div>
-                  <p className="text-sm mb-8 text-gray-500">{t('pricing.pauseCancel')}</p>
-                  
-                  <a 
-                    href={whatsappLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full py-4 rounded-xl font-semibold flex flex-col items-center justify-center gap-1 transition-all duration-300 group bg-white text-black hover:bg-gray-200 md:hidden"
-                  >
-                    <span className="flex items-center gap-2">{item.buttonText} <ArrowRight size={16} /></span>
-                  </a>
-                  <div className="mt-3 text-center md:hidden">
-                       <span className="text-xs text-gray-500 flex items-center justify-center gap-1">
-                          <Star size={10} className="fill-yellow-500 text-yellow-500" />
-                          {t('pricing.trustSignal')}
-                       </span>
+
+                  {/* Mobile-only CTA */}
+                  <div className="md:hidden">
+                    <p className="text-sm mb-4 text-gray-500">{t('pricing.pauseCancel')}</p>
+                    <a 
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full py-4 rounded-xl font-semibold flex flex-col items-center justify-center gap-1 transition-all duration-300 group bg-black dark:bg-white text-white dark:text-black hover:opacity-90"
+                    >
+                        <span className="flex items-center gap-2">{item.buttonText} <ArrowRight size={16} /></span>
+                    </a>
+                    <div className="mt-3 text-center">
+                        <span className="text-xs text-gray-500 flex items-center justify-center gap-1">
+                            <Star size={10} className="fill-yellow-500 text-yellow-500" />
+                            {t('pricing.trustSignal')}
+                        </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex-1 md:border-l md:border-zinc-800 md:pl-8 flex flex-col justify-between relative z-20">
+                <div className="flex-1 md:border-l md:border-gray-100 dark:md:border-zinc-800 md:pl-10 flex flex-col justify-between relative z-20">
+                    <div className="hidden md:block">
+                        <p className="text-sm mb-6 text-gray-500">{t('pricing.pauseCancel')}</p>
+                    </div>
                    <ul className="space-y-4 mb-10">
                     {item.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
@@ -191,23 +203,23 @@ export const Pricing: React.FC = () => {
                           <Check size={12} />
                         </div>
                         <Tooltip content={TOOLTIP_DATA[feature]}>
-                          <span className={`text-sm cursor-help ${TOOLTIP_DATA[feature] ? 'border-b border-dotted border-gray-500/50' : ''} text-gray-300`}>{feature}</span>
+                          <span className={`text-sm cursor-help ${TOOLTIP_DATA[feature] ? 'border-b border-dotted border-gray-300 dark:border-gray-600' : ''} text-gray-600 dark:text-gray-300`}>{feature}</span>
                         </Tooltip>
                       </li>
                     ))}
                   </ul>
 
-                  <div>
+                  <div className="hidden md:block">
                       <a 
                         href={whatsappLink}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-full py-4 rounded-xl font-semibold hidden md:flex items-center justify-center gap-2 transition-all duration-300 group bg-white text-black hover:bg-gray-200"
+                        className="w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 group bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200"
                       >
                         {item.buttonText} 
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                       </a>
-                      <div className="mt-3 text-center hidden md:block">
+                      <div className="mt-3 text-center">
                            <span className="text-xs text-gray-500 flex items-center justify-center gap-1">
                               <div className="flex">
                                 {[1,2,3,4,5].map(s => <Star key={s} size={10} className="fill-yellow-500 text-yellow-500" />)}

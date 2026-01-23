@@ -8,7 +8,9 @@
     <meta name="description" content="Etalas is a premium digital product studio specializing in AI, Strategy, Design, and Development for startups and founders. Build your MVP in weeks.">
     <meta name="keywords" content="AI Product Studio, Software House, Web Development, App Development, MVP Builder, Startup Agency, UI/UX Design, Etalas">
     <meta name="author" content="etalas">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#FDFBF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href="https://www.etalas.com/" />
     
     <!-- Preconnect to image CDN for faster loading -->
@@ -29,6 +31,24 @@
     <meta property="twitter:title" content="etalas | Digital Software House">
     <meta property="twitter:description" content="The #1 AI Product Studio. Trusted by startups and founders to design, build, and launch products that scale.">
     <meta property="twitter:image" content="https://www.etalas.com/og-image.jpg">
+
+    <!-- Meta Pixel Code (Placeholder - Replace ID with actual) -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID_HERE');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 
     <!-- JSON-LD for SEO -->
     <script type="application/ld+json">
@@ -139,6 +159,11 @@
         color: #FDFBF7;
       }
       
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+
       /* Lenis Recommended CSS */
       html.lenis, html.lenis body {
         height: auto;

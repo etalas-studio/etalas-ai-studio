@@ -26,11 +26,11 @@ function AppContent() {
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [currentView, setCurrentView] = useState<'home' | 'blog'>('home');
 
-  // Preloader Failsafe
+  // Preloader Failsafe - Much shorter timeout (1.5s max) to ensure SEO bots see content
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3500); 
+    }, 1500); 
     return () => clearTimeout(timer);
   }, []);
 

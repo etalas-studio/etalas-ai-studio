@@ -1,22 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 export const BackgroundBlobs: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth out the mouse movement
+  const springConfig = { damping: 25, stiffness: 150 };
+  const x = useSpring(mouseX, springConfig);
+  const y = useSpring(mouseY, springConfig);
+
+  // Transform values for different layers (parallax effect)
+  const x1 = useTransform(x, (value) => value * -0.02);
+  const y1 = useTransform(y, (value) => value * -0.02);
+  
+  const x2 = useTransform(x, (value) => value * 0.02);
+  const y2 = useTransform(y, (value) => value * 0.02);
+
+  const x3 = useTransform(x, (value) => value * 0.01);
+  const y3 = useTransform(y, (value) => value * 0.01);
 
   useEffect(() => {
-    // Optimization: Use requestAnimationFrame for smoother visual updates if needed, 
-    // but React state updates are generally batched well enough for this simple effect.
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
     
-    // Only listen on client side
     if (typeof window !== 'undefined') {
         window.addEventListener('mousemove', handleMouseMove);
     }
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [mouseX, mouseY]);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -28,31 +42,19 @@ export const BackgroundBlobs: React.FC = () => {
         {/* Purple Blob Top Right - Responsive Parallax */}
         <motion.div 
             className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[100px] dark:bg-purple-900/20 mix-blend-multiply dark:mix-blend-screen" 
-            animate={{
-                x: mousePosition.x * -0.02,
-                y: mousePosition.y * -0.02,
-            }}
-            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+            style={{ x: x1, y: y1 }}
         />
         
         {/* Black/Gray Blob Bottom Left - Responsive Parallax */}
         <motion.div 
             className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gray-900/5 rounded-full blur-[80px] dark:bg-gray-800/20"
-            animate={{
-                x: mousePosition.x * 0.02,
-                y: mousePosition.y * 0.02,
-            }}
-            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+            style={{ x: x2, y: y2 }}
         />
         
         {/* Center light accent */}
         <motion.div 
             className="absolute top-[40%] left-[40%] w-[400px] h-[400px] bg-brand-500/5 rounded-full blur-[100px]"
-            animate={{
-                x: mousePosition.x * 0.01,
-                y: mousePosition.y * 0.01,
-            }}
-            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+            style={{ x: x3, y: y3 }}
         />
     </div>
   );

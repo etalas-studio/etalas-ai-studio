@@ -3,36 +3,37 @@ import { motion } from 'framer-motion';
 import { Project } from '../types';
 import { ArrowUpRight, ArrowLeft, ArrowRight } from 'lucide-react';
 
+// Optimized images with specific Unsplash IDs for caching and visual consistency
 const projects: Project[] = [
   {
     id: 1,
     title: "FinTech Revolution",
     category: "App Development",
-    image: "https://picsum.photos/800/600?random=1"
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&h=450&auto=format&fit=crop"
   },
   {
     id: 2,
     title: "EcoStream Platform",
     category: "Web Design",
-    image: "https://picsum.photos/800/800?random=2"
+    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&h=450&auto=format&fit=crop"
   },
   {
     id: 3,
     title: "Urban Mobility",
     category: "Strategy & Dev",
-    image: "https://picsum.photos/800/1000?random=3"
+    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800&h=450&auto=format&fit=crop"
   },
   {
     id: 4,
     title: "HealthConnect",
     category: "Product Design",
-    image: "https://picsum.photos/800/600?random=4"
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&h=450&auto=format&fit=crop"
   },
   {
     id: 5,
     title: "Future Retail",
     category: "E-commerce",
-    image: "https://picsum.photos/800/600?random=5"
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&h=450&auto=format&fit=crop"
   }
 ];
 
@@ -139,6 +140,8 @@ export const Work: React.FC = () => {
                         <img 
                         src={project.image} 
                         alt={project.title} 
+                        width="800"
+                        height="450"
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />

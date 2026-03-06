@@ -1,18 +1,18 @@
 import React, { memo } from 'react';
 import { useLanguage } from '../contexts';
-import { Code2, Database, Globe, Smartphone, Cloud, Cpu, Lock, Zap } from 'lucide-react';
+import { Building2, Users, Cpu, Shield, Zap, Globe } from 'lucide-react';
 
-const TECH_ITEMS = [
-  { name: 'React', icon: <Code2 size={24} /> },
-  { name: 'TypeScript', icon: <Code2 size={24} /> },
-  { name: 'Next.js', icon: <Globe size={24} /> },
-  { name: 'Tailwind CSS', icon: <Zap size={24} /> },
-  { name: 'Supabase', icon: <Database size={24} /> },
-  { name: 'OpenAI', icon: <Cpu size={24} /> },
-  { name: 'React Native', icon: <Smartphone size={24} /> },
-  { name: 'Vercel', icon: <Cloud size={24} /> },
-  { name: 'Stripe', icon: <Lock size={24} /> },
-  { name: 'Node.js', icon: <Code2 size={24} /> }
+const CREDIBILITY_ITEMS = [
+  { name: 'AYANA Hotel Group', icon: <Building2 size={24} /> },
+  { name: 'Swiss-Belhotel', icon: <Globe size={24} /> },
+  { name: 'AI-Native Development', icon: <Cpu size={24} /> },
+  { name: 'Enterprise Security', icon: <Shield size={24} /> },
+  { name: '20+ Years Experience', icon: <Users size={24} /> },
+  { name: 'Rapid Delivery', icon: <Zap size={24} /> },
+  { name: 'Hospitality Specialists', icon: <Building2 size={24} /> },
+  { name: 'Product-Thinking Approach', icon: <Cpu size={24} /> },
+  { name: 'PMS & ERP Integration', icon: <Globe size={24} /> },
+  { name: 'Enterprise-Grade Systems', icon: <Shield size={24} /> },
 ];
 
 export const TechStack: React.FC = memo(() => {
@@ -29,10 +29,10 @@ export const TechStack: React.FC = memo(() => {
       <div className="relative flex overflow-hidden group">
         {/* First list */}
         <div className="flex shrink-0 animate-marquee whitespace-nowrap gap-16 px-8 will-change-transform">
-          {[...TECH_ITEMS, ...TECH_ITEMS].map((item, index) => (
+          {[...CREDIBILITY_ITEMS, ...CREDIBILITY_ITEMS].map((item, index) => (
             <div 
                 key={`list1-${index}`} 
-                className="flex items-center gap-3 text-2xl font-medium text-gray-400 dark:text-gray-500 grayscale transition-all duration-300 hover:grayscale-0 hover:text-black dark:hover:text-white cursor-default"
+                className="flex items-center gap-3 text-2xl font-medium text-gray-400 dark:text-gray-500 transition-all duration-300 hover:text-black dark:hover:text-white cursor-default"
             >
               <span className="opacity-50">{item.icon}</span>
               <span>{item.name}</span>
@@ -42,10 +42,10 @@ export const TechStack: React.FC = memo(() => {
 
         {/* Second identical list for seamless scrolling */}
         <div className="flex shrink-0 animate-marquee whitespace-nowrap gap-16 px-8 will-change-transform">
-          {[...TECH_ITEMS, ...TECH_ITEMS].map((item, index) => (
+          {[...CREDIBILITY_ITEMS, ...CREDIBILITY_ITEMS].map((item, index) => (
             <div 
                 key={`list2-${index}`} 
-                className="flex items-center gap-3 text-2xl font-medium text-gray-400 dark:text-gray-500 grayscale transition-all duration-300 hover:grayscale-0 hover:text-black dark:hover:text-white cursor-default"
+                className="flex items-center gap-3 text-2xl font-medium text-gray-400 dark:text-gray-500 transition-all duration-300 hover:text-black dark:hover:text-white cursor-default"
             >
               <span className="opacity-50">{item.icon}</span>
               <span>{item.name}</span>
@@ -60,5 +60,3 @@ export const TechStack: React.FC = memo(() => {
     </section>
   );
 });
-
-TechStack.displayName = 'TechStack';

@@ -6,27 +6,27 @@ import { Service } from '../types';
 const services: Service[] = [
   {
     id: 1,
-    title: "Product Design",
-    description: "We craft intuitive and stunning user interfaces that drive engagement. From wireframing to high-fidelity prototyping, our design process is user-centric.",
-    tags: ["UI/UX", "Prototyping", "Design Systems", "User Research"]
+    title: "AI-Powered Operational Systems",
+    description: "Custom operational systems that use AI to automate repetitive tasks, surface insights from your data, and reduce manual work across departments. We build tools that hotel operations leaders actually rely on — from daily reporting to predictive maintenance workflows.",
+    tags: ["AI Automation", "Workflow Intelligence", "Operational Dashboards", "Predictive Analytics"]
   },
   {
     id: 2,
-    title: "Web Development",
-    description: "Robust, scalable, and high-performance websites built with the latest technologies. We specialize in modern frameworks to deliver lightning-fast experiences.",
-    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "CMS Integration"]
+    title: "Custom Internal Tools",
+    description: "Purpose-built internal applications for hotel teams — from housekeeping management and maintenance ticketing to staff scheduling and procurement tracking. We replace the spreadsheets and WhatsApp groups with systems designed for how your teams actually work.",
+    tags: ["Staff Portals", "Housekeeping Systems", "Maintenance Management", "Procurement Tools"]
   },
   {
     id: 3,
-    title: "Mobile Solutions",
-    description: "Native and cross-platform mobile applications that put your business in your customers' hands. Seamless performance on iOS and Android.",
-    tags: ["React Native", "iOS", "Android", "Flutter"]
+    title: "System Integrations",
+    description: "Your hotel already runs on PMS, POS, ERP, and a dozen other tools. We connect them. Whether it's syncing guest data across platforms, automating reporting from multiple systems, or bridging legacy software with modern APIs — we make your stack work together.",
+    tags: ["PMS Integration", "POS Connectivity", "ERP Bridges", "Legacy System Modernisation"]
   },
   {
     id: 4,
-    title: "Digital Strategy",
-    description: "Data-driven insights to guide your digital transformation. We help you define your roadmap, identify opportunities, and achieve sustainable growth.",
-    tags: ["Market Analysis", "Product Roadmap", "Analytics", "Brand Positioning"]
+    title: "Workflow Automation",
+    description: "We identify the highest-impact manual workflows in your operations and automate them — guest communication flows, internal approvals, shift handovers, incident reporting, and more. Less manual coordination, fewer errors, faster resolution.",
+    tags: ["Process Automation", "Approval Workflows", "Notification Systems", "Reporting Automation"]
   }
 ];
 
@@ -46,10 +46,10 @@ export const Services: React.FC = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6 dark:text-white">
-                Our <br /> Expertise
+                What we <br /> build
               </h2>
               <p className="text-etalas-secondary dark:text-gray-400 mb-8 text-lg leading-relaxed">
-                We cover the entire product lifecycle, from initial concept to final deployment and scaling.
+                Purpose-built for hospitality operations — not adapted from generic software templates.
               </p>
             </motion.div>
           </div>

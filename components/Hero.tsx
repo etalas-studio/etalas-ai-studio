@@ -11,22 +11,18 @@ export const Hero: React.FC = () => {
 
   // Updated client list
   const trustedClients = [
-    "KarmaClub", 
-    "YOLO Padel", 
-    "Swissbel Hotel", 
-    "Plumber", 
-    "Runchise", 
-    "Angkas", 
-    "Let's Grow", 
-    "WorldHub", 
-    "Kamon", 
-    "Deka Insight", 
-    "Ditajaya", 
-    "Musicology", 
-    "Skedul",
-    "Pont", 
-    "Prodago", 
-    "Metion"
+    "AYANA Hotel Group",
+    "Swiss-Belhotel",
+    "Hotel Groups",
+    "Resorts",
+    "Hospitality Management",
+    "Enterprise Operations",
+    "AYANA Hotel Group",
+    "Swiss-Belhotel",
+    "Hotel Groups",
+    "Resorts",
+    "Hospitality Management",
+    "Enterprise Operations",
   ];
 
   return (
@@ -96,8 +92,8 @@ export const Hero: React.FC = () => {
               </p>
               
               <div className="flex flex-wrap gap-4 mb-10">
-                <Button variant="primary" href="#process">{t('hero.startBuilding')}</Button>
-                <Button variant="outline" href="#pricing">{t('hero.viewPricing')}</Button>
+                <Button variant="primary" href="#contact">{t('hero.startBuilding')}</Button>
+                <Button variant="outline" href="#services">{t('hero.viewPricing')}</Button>
               </div>
 
               {/* ROI Pillars */}
@@ -117,7 +113,7 @@ export const Hero: React.FC = () => {
               transition={{ delay: 0.6 }}
               className="hidden lg:flex"
             >
-              <a href="#process" className="p-4 rounded-full border border-brand-100 dark:border-zinc-700 bg-white/50 dark:bg-zinc-800/50 backdrop-blur-sm shadow-lg shadow-brand-500/10 text-brand-600 dark:text-white hover:scale-110 transition-transform duration-300" aria-label="Scroll to Process">
+              <a href="#work" className="p-4 rounded-full border border-brand-100 dark:border-zinc-700 bg-white/50 dark:bg-zinc-800/50 backdrop-blur-sm shadow-lg shadow-brand-500/10 text-brand-600 dark:text-white hover:scale-110 transition-transform duration-300" aria-label="Scroll to Process">
                  <ArrowRight size={32} />
               </a>
             </motion.div>

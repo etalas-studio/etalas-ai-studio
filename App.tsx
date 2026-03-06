@@ -84,7 +84,7 @@ function AppContent() {
     if (currentView === 'blog') {
       document.title = 'Insights | etalas - AI Product Studio';
     } else {
-      document.title = 'etalas | Digital Software House - Build Your MVP';
+      document.title = 'Etalas | Hospitality Specialist Software House — Operational Efficiency for Hospitality Enterprises';
     }
   }, [currentView]);
 
@@ -122,7 +122,7 @@ function AppContent() {
     return () => document.removeEventListener('click', handleAnchorClick);
   }, [currentView]);
 
-  const whatsappLink = "https://wa.me/62811297339?text=Hi%20etalas,%20I'd%20like%20to%20discuss%20a%20project.";
+  const whatsappLink = "https://wa.me/62811297339?text=Hi%20Etalas,%20I'd%20like%20to%20discuss%20our%20hospitality%20operational%20challenges.";
 
   return (
     <>
@@ -148,13 +148,13 @@ function AppContent() {
                     <div className="inline-flex animate-marquee">
                        {[...Array(4)].map((_, i) => (
                          <div key={i} className="flex gap-16 mx-8 items-center text-4xl font-light text-gray-300 dark:text-zinc-700">
-                            <span>STRATEGY</span>
+                            <span>HOSPITALITY</span>
                             <span className="w-3 h-3 rounded-full bg-black/10 dark:bg-white/10"></span>
-                            <span>DESIGN</span>
+                            <span>OPERATIONS</span>
                             <span className="w-3 h-3 rounded-full bg-black/10 dark:bg-white/10"></span>
-                            <span>DEVELOPMENT</span>
+                            <span>AI-NATIVE</span>
                             <span className="w-3 h-3 rounded-full bg-black/10 dark:bg-white/10"></span>
-                            <span>LAUNCH</span>
+                            <span>EFFICIENCY</span>
                             <span className="w-3 h-3 rounded-full bg-black/10 dark:bg-white/10"></span>
                          </div>
                        ))}

@@ -1,83 +1,41 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Project } from '../types';
-import { ArrowUpRight, ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Building2 } from 'lucide-react';
 
-// Optimized images with specific Unsplash IDs for caching and visual consistency
-const projects: Project[] = [
+const caseStudies = [
   {
     id: 1,
-    title: "FinTech Revolution",
-    category: "App Development",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&h=450&auto=format&fit=crop"
+    title: "AYANA Hotel Group",
+    category: "Operational Systems · AI Integration",
+    description: "Partnered with AYANA to streamline internal operational workflows across multiple properties — reducing manual coordination and improving data visibility for operations leadership.",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&h=450&auto=format&fit=crop",
+    tags: ["Hotel Group", "Multi-Property", "Workflow Automation"]
   },
   {
     id: 2,
-    title: "EcoStream Platform",
-    category: "Web Design",
-    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&h=450&auto=format&fit=crop"
+    title: "Swiss-Belhotel",
+    category: "Internal Tools · System Integration",
+    description: "Built custom internal tools for Swiss-Belhotel's operational teams, connecting existing systems and reducing reliance on manual reporting processes across departments.",
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&h=450&auto=format&fit=crop",
+    tags: ["International Brand", "System Integration", "Internal Tools"]
   },
   {
     id: 3,
-    title: "Urban Mobility",
-    category: "Strategy & Dev",
-    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800&h=450&auto=format&fit=crop"
+    title: "Hospitality Management Platform",
+    category: "Custom System Build",
+    description: "End-to-end design and development of a hospitality management platform — from staff-facing tools to management dashboards with real-time operational visibility.",
+    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=800&h=450&auto=format&fit=crop",
+    tags: ["Platform Build", "Dashboard", "Staff Tools"]
   },
   {
     id: 4,
-    title: "HealthConnect",
-    category: "Product Design",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&h=450&auto=format&fit=crop"
-  },
-  {
-    id: 5,
-    title: "Future Retail",
-    category: "E-commerce",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&h=450&auto=format&fit=crop"
+    title: "Operational AI Workflows",
+    category: "AI Automation",
+    description: "Deployed AI-assisted workflows for hospitality operations teams — automating repetitive reporting, surfacing anomalies in operational data, and accelerating response times.",
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&h=450&auto=format&fit=crop",
+    tags: ["AI Automation", "Reporting", "Operational Intelligence"]
   }
 ];
-
-const SpotlightWorkCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = "" }) => {
-    const divRef = useRef<HTMLDivElement>(null);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [opacity, setOpacity] = useState(0);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!divRef.current) return;
-        const div = divRef.current;
-        const rect = div.getBoundingClientRect();
-        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-    };
-
-    const handleFocus = () => {
-        setOpacity(1);
-    };
-
-    const handleBlur = () => {
-        setOpacity(0);
-    };
-
-    return (
-        <motion.div
-            ref={divRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleFocus}
-            onMouseLeave={handleBlur}
-            className={`relative overflow-hidden ${className}`}
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.3 }}
-        >
-            <div
-                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-30 rounded-xl"
-                style={{
-                    opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.1), transparent 40%)`,
-                }}
-            />
-            {children}
-        </motion.div>
-    );
-};
 
 export const Work: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -101,11 +59,15 @@ export const Work: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 border border-brand-100 dark:border-brand-800 text-brand-600 dark:text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
+              <Building2 size={12} />
+              <span>Hospitality Experience</span>
+            </div>
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight dark:text-white mb-4">
-              Selected Work
+              Enterprise clients.<br/>Real operations.
             </h2>
             <p className="text-lg text-gray-500 dark:text-gray-400">
-               We build digital products that define categories. Here's a glimpse of our recent partnerships.
+              We have worked directly with major hospitality enterprises in Indonesia — giving us the operational depth that generic agencies simply don't have.
             </p>
           </motion.div>
           
@@ -133,9 +95,13 @@ export const Work: React.FC = () => {
             className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-12 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {projects.map((project, index) => (
+          {caseStudies.map((project, index) => (
             <div key={project.id} className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[35vw] snap-center">
-                <SpotlightWorkCard className="group cursor-pointer h-full rounded-2xl">
+                <motion.div
+                  className="group cursor-default h-full rounded-2xl"
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
                     <div className="relative overflow-hidden rounded-2xl mb-6 aspect-video shadow-sm bg-gray-100 dark:bg-zinc-800">
                         <img 
                         src={project.image} 
@@ -145,40 +111,53 @@ export const Work: React.FC = () => {
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500" />
                         
-                        {/* Floating Arrow Button on Hover */}
-                        <div className="absolute bottom-6 right-6 bg-white dark:bg-black text-black dark:text-white p-4 rounded-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-xl z-20">
-                            <ArrowUpRight size={20} />
+                        {/* Tags overlay */}
+                        <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+                          {project.tags.map(tag => (
+                            <span key={tag} className="px-3 py-1 bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-full text-xs font-medium text-gray-800 dark:text-gray-200">
+                              {tag}
+                            </span>
+                          ))}
                         </div>
                     </div>
                     
-                    <div className="flex items-end justify-between px-2">
+                    <div className="px-2">
                         <div>
                             <span className="text-xs font-mono text-brand-600 dark:text-brand-400 mb-2 block">
                                 {String(index + 1).padStart(2, '0')}
                             </span>
-                            <h3 className="text-2xl font-bold dark:text-white mb-1 group-hover:text-brand-600 transition-colors">{project.title}</h3>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">{project.category}</p>
+                            <h3 className="text-2xl font-bold dark:text-white mb-2 group-hover:text-brand-600 transition-colors">{project.title}</h3>
+                            <p className="text-sm text-brand-600 dark:text-brand-400 font-medium mb-3">{project.category}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{project.description}</p>
                         </div>
                     </div>
-                </SpotlightWorkCard>
+                </motion.div>
             </div>
           ))}
-          
-          {/* "View All" Card at the end */}
-           <div className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[35vw] snap-center flex items-center justify-center">
-              <a href="#" className="group flex flex-col items-center justify-center gap-4 text-center p-12 rounded-2xl border-2 border-dashed border-gray-200 dark:border-zinc-800 w-full h-full hover:border-brand-500 transition-colors hover:bg-brand-50/50 dark:hover:bg-brand-900/10">
-                 <div className="p-4 rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-brand-500 group-hover:text-white transition-colors">
-                     <ArrowRight size={24} />
-                 </div>
-                 <div>
-                     <h3 className="text-xl font-bold dark:text-white">View All Projects</h3>
-                     <p className="text-sm text-gray-500">Explore our full portfolio</p>
-                 </div>
-              </a>
-           </div>
         </div>
+
+        {/* Credibility Stats Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-gray-100 dark:border-zinc-800"
+        >
+          {[
+            { value: "20+", label: "Years combined experience" },
+            { value: "30+", label: "Enterprise systems delivered" },
+            { value: "2", label: "Major hospitality groups served" },
+            { value: "100%", label: "Hospitality focus" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-brand-600 dark:text-brand-400 mb-1">{stat.value}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

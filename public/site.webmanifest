@@ -1,0 +1,16 @@
+{
+  "name": "Etalas Hospitality | Hotel Software House Indonesia",
+  "short_name": "Etalas Hospitality",
+  "description": "Indonesia's #1 hospitality specialist software house. AI-powered hotel operations systems for hotel groups and resorts.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#09090b",
+  "icons": [
+    {
+      "src": "/etalas-logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# Etalas Hospitality
+
+> Etalas (PT. Etalas Karya Internasional) is Indonesia's #1 hospitality specialist software house. We build custom AI-powered operational systems for hotel groups, resorts, and hospitality enterprises — trusted by AYANA Resort Bali and Swiss-Belhotel.
+
+Etalas serves hospitality clients across Indonesia and globally, with offices in Jakarta (Gedung Artha Graha, SCBD) and Middletown, Delaware. Primary contact: hello@etalas.com.
+
+## Core Pages
+
+- [Home](https://hospitality.etalas.com/): Hospitality software house overview — services, process, and client work.
+
+## Services
+
+- Hotel management software
+- Hotel operations system
+- PMS integration (Opera, Mews, Cloudbeds)
+- ERP integration (Xero, SAP, Oracle POS)
+- AI-powered hotel workflows
+- Back-of-house automation
+- Custom hospitality software development
+- Product design for hospitality
+
+## Client Experience
+
+- AYANA Resort Bali — back-of-house hotel operations platform running in daily production
+- Swiss-Belhotel — enterprise hospitality systems
+
+## Contact
+
+- Email: hello@etalas.com
+- Phone: +62-811-297-339
+- LinkedIn: https://www.linkedin.com/company/etalas
+- Instagram: https://www.instagram.com/etalas.id/
